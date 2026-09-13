@@ -1,0 +1,23 @@
+{
+  "name": "torre-control-flota",
+  "version": "0.2.0",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "description": "Plataforma de gestión y planificación de flota — San Martín",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test tests/analytics.test.mjs",
+    "test:ui": "node tests/ui.cjs"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "playwright": "1.51.1"
+  }
+}

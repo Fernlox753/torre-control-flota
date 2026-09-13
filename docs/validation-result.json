@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "totales",
+    "cobertura vacía",
+    "navegación",
+    "3 modelos GLB",
+    "animaciones y cámaras",
+    "acciones y recarga",
+    "escape HTML",
+    "exportación CSV/JSON",
+    "importación idempotente",
+    "búsqueda y referencia",
+    "responsive 390/768/1440",
+    "fallo 3D con alternativa"
+  ],
+  "errors": [],
+  "failed": []
+}
