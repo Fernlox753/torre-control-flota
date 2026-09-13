@@ -87,7 +87,10 @@ Ver todas las fórmulas y contratos en `DATOS.md`.
 - Recorridos automatizados de navegador aprobados; tres GLB, controles y animación; creación/recarga/estado de acción, exportaciones e importación; alternativa ante fallo del 3D.
 - Interfaz revisada a 390, 768 y 1440 px; sin desbordamiento horizontal de la página. Las tablas mantienen scroll dentro de su contenedor.
 - Capturas de revisión y resultado resumido en `docs/VALIDACION.md`.
-- Publicación objetivo: rama `main`, GitHub Pages. La existencia del commit remoto y la respuesta de Pages son la evidencia de publicación; consultar el historial para el hash de la entrega.
+- **Publicado y verificado** en `https://fernlox753.github.io/torre-control-flota/`. Primera entrega de plataforma: commit `fd5dd62`, subido a `main`.
+- Se confirmó respuesta HTTP 200 y coincidencia SHA-256 de `index.html`, los bundles y esta memoria entre el servidor público y los archivos locales; se abrió la ficha FC-104 y cargó su camión 3D en el navegador público.
+- Ajuste de cierre: el enlace «Saltar al contenido» mueve el foco al panel actual y no cambia el recorrido elegido. Incluye prueba de regresión.
+- Los commits posteriores de cierre registran la publicación y ajustes verificados; consultar `git log` para el último hash. La presentación original continúa disponible.
 
 ## 7. Siguiente iteración propuesta
 

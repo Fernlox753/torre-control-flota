@@ -123,6 +123,10 @@ const server = http.createServer((req, res) => {
       .click();
     await page.reload();
     await page.locator('[data-view="planificacion"]').click();
+    await page.locator(".skip").focus();
+    await page.keyboard.press("Enter");
+    assert.match(page.url(), /#planificacion/);
+    assert.equal(await page.evaluate(() => document.activeElement.id), "main");
     await page.locator("#search").fill("FC-104");
     assert.equal(await page.locator("#equipment-table tbody tr").count(), 1);
     assert.equal(await page.locator("#actions-list .action-item").count(), 1);

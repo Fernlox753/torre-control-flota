@@ -351,6 +351,11 @@ async function load3D() {
 document.addEventListener("click", (event) => {
   const target = event.target.closest("button,a");
   if (!target) return;
+  if (target.classList.contains("skip")) {
+    event.preventDefault();
+    $("main").focus();
+    return;
+  }
   if (target.dataset.view) {
     event.preventDefault();
     navigate(target.dataset.view);

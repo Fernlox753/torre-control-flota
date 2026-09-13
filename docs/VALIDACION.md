@@ -27,6 +27,11 @@ Fecha: 13 de septiembre de 2026. Entorno: Windows, Node.js, Chrome con Playwrigh
 14. Búsqueda sin resultados y modificación de referencia.
 15. Pantallas de 390, 768 y 1440 px sin desbordamiento horizontal de la página.
 16. Respuesta 503 simulada al cargar GLB: imagen alternativa, reintento y costos conservados.
+17. «Saltar al contenido» mantiene la vista de planificación y mueve el foco a `main`.
+
+## Publicación
+
+Primera entrega subida a `main`: `fd5dd62`. Se abrió la página pública, se navegó a FC-104 y se cargó su GLB. HTTP 200; el HTML, los dos bundles y la memoria se compararon por SHA-256 con los archivos locales. El código de cierre y esta verificación se conservan en commits posteriores del mismo historial.
 
 ## Revisión visual
 
