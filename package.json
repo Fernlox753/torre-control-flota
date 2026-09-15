@@ -10,6 +10,7 @@
   "description": "Plataforma de gestión y planificación de flota — San Martín",
   "scripts": {
     "build": "node build.mjs",
+    "build:relato": "node build-relato.mjs",
     "test": "node --test tests/analytics.test.mjs",
     "test:ui": "node tests/ui.cjs"
   },

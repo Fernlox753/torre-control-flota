@@ -12,4 +12,6 @@ Three.js 0.170.0, Copyright © 2010–2024 three.js authors. Licencia MIT inclui
 
 ## Herramientas de desarrollo
 
+El nuevo recorrido también sirve una copia local de Three.js r128 (`assets/vendor/three-r128.min.js`), obtenida de https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js. Conserva su encabezado MIT; véase `licenses/THREE-R128-LICENSE.txt`. Las páginas históricas mantienen el CDN y la herramienta de gestión mantiene 0.170.0.
+
 esbuild 0.24.0 y Playwright 1.51.1 son dependencias de desarrollo. Sus paquetes incluyen sus propias licencias. No se incluye Rapier ni la física del videojuego en la nueva plataforma.

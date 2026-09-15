@@ -1,5 +1,24 @@
 # Memoria de trabajo — Torre de Control de Flota
 
+## Dirección vigente · 2026-09-15
+
+El usuario rechazó el aspecto del panel v0.2 como entrada y pidió acercarse al [Artifact de Claude](https://claude.ai/code/artifact/4e4c3e2e-0a7b-4667-a6cb-c522ed4321a0), para concentrar el trabajo en mejorar los diseños 3D. Esta decisión reemplaza la preferencia anterior por el panel como portada. Se revisó la referencia en navegador y se reutilizaron los capítulos existentes para reconstruir su recorrido continuo.
+
+**Construido:** `index.html` reúne las ocho secciones con su composición original. `gestion.html` conserva las herramientas de v0.2. Los capítulos históricos siguen disponibles. El camión conserva el mapa procedural de sistemas y añade rodadura geométrica, llantas más anchas, rejilla, pasamanos, mangueras, cristales, iluminación, acabado realista, apertura ilustrativa de tolva y controles de cámara por botón/teclado. El terreno tiene mayor resolución. No se modificaron cifras ni los GLB de Tajo Norte.
+
+**Fuentes:** editar `src/relato.html`, `src/relato.css`, `src/relato.js`; ejecutar `pnpm build:relato`. El build completo también reconstruye el relato. Su fuente de datos sigue siendo `assets/data/cierre-2026-08.json`. La copia local de Three.js r128 tiene atribución MIT.
+
+**Probado:** ocho tests de cálculo aprobados. Suite de navegador aprobada en Edge con Playwright disponible en el runtime: recorrido continuo, 48 equipos, cambio de materiales, apertura de tolva, costo/OT de MOTOR1, retorno desde esquema a camión, teclado, visor dentro de su contenedor a 390/768/1440 px y alternativa sin Three.js. También pasaron los recorridos de gestión, tres GLB, animaciones, acciones, importación/exportación y fallback. Revisión visual de portada y camión en escritorio y móvil. Resultados/capturas en `test-results/` (no versionados).
+
+**Limitaciones de validación:** `pnpm install --frozen-lockfile` no pudo descargar desde npm por errores de conexión. Se reconstruyó el relato mediante su script de Node sin dependencias nuevas; los bundles de gestión existentes se conservaron y probaron. El build completo de gestión no se volvió a ejecutar. Tests unitarios ejecutados sin aislamiento de procesos por restricciones del entorno.
+
+**Alcance 3D:** camión genérico, no réplica de fabricante. La tolva abierta ilustra inspección; no es una simulación cinemática certificada. Equipos de otras familias siguen mostrando esquemas. Datos y limitaciones históricas permanecen vigentes. La siguiente mejora visual puede concentrarse en modelos por familia sin cambiar esta dirección de interfaz.
+
+**Estado:** propuesta local en la rama `codex/relato-3d`; no desplegada sobre `main`. La versión pública sigue siendo v0.2 hasta que se integre esta propuesta.
+
+---
+## Historial de la entrega anterior
+
 Actualizada: **2026-09-13 · v0.2.0**. Este documento es el punto de continuidad entre personas, chats y herramientas de IA. Leer junto con `AGENTS.md`, el contrato de datos y `git log`.
 
 ## 1. Objetivo acordado

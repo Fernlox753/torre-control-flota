@@ -1,5 +1,13 @@
 # Arquitectura y operación
 
+## Entrada visual · septiembre 2026
+
+`index.html` ahora es el relato continuo, generado desde `src/relato.html`. CSS y lógica viven en `src/relato.css` y `src/relato.js`. `build-relato.mjs` copia la plantilla/estilos e inserta el JSON de cierre en el JavaScript publicado; se ejecuta con `pnpm build:relato` o al final del build completo. No requiere paquetes adicionales. Se versionan `index.html` y `assets/build/relato.*`.
+
+El relato usa Three.js r128 local en `assets/vendor/three-r128.min.js` para conservar las convenciones de material y geometría originales. Su 3D procedural es independiente del visor GLB 0.170.0 de gestión. El mapa de costos existente permanece asociado a códigos de sistema; el acabado realista cambia solo materiales. La vista de inspección gira la tolva alrededor de una bisagra ilustrativa y mantiene el resto del equipo fijo. No modifica costos ni implica correspondencia cinemática de fabricante.
+
+La aplicación v0.2 se conserva en `gestion.html`; sus hashes y almacenamiento por origen no cambian. El enlace al pie del relato abre gestión. Los capítulos históricos conservan sus rutas. La descripción que sigue documenta la aplicación de gestión anterior; sustituir `index.html` por `gestion.html` al probarla de forma directa.
+
 ## Estructura
 
 ```text

@@ -59,7 +59,41 @@ const server = http.createServer((req, res) => {
       failed = [];
     page.on("pageerror", (e) => errors.push(e.message));
     page.on("requestfailed", (r) => failed.push(r.url()));
+    // Recorrido visual: selección de equipo, costo por pieza y controles 3D.
     await page.goto(base);
+    await page.locator('#selector option').first().waitFor({state:'attached'});
+    assert.equal(await page.locator('main > section').count(),8);
+    assert.equal(await page.locator('#tabla tr').count(),48);
+    await page.locator('#pausa').click();
+    await page.screenshot({path:path.join(out,'relato-portada.png')});
+    await page.locator('#v-reset').click();
+    const vistaCosto=await page.locator('#lienzo-eq').screenshot();
+    await page.locator('#v-material').click();
+    assert.equal(await page.locator('#v-material').getAttribute('aria-pressed'),'true');
+    assert.notDeepEqual(await page.locator('#lienzo-eq').screenshot(),vistaCosto);
+    await page.locator('#v-inspeccion').click();
+    assert.equal(await page.locator('#v-inspeccion').innerText(),'CERRAR TOLVA');
+    await page.locator('.visor').screenshot({path:path.join(out,'relato-camion.png')});
+    await page.locator('#v-inspeccion').click();
+    await page.locator('#sistemas button').filter({hasText:'MOTOR1'}).click();
+    assert.match(await page.locator('#detalle').innerText(),/194,145/);
+    await page.locator('#selector').selectOption('CH-06');
+    assert.equal(await page.locator('#esquema').isVisible(),true);
+    assert.equal(await page.locator('#v-3d').isEnabled(),false);
+    await page.locator('#selector').selectOption('FC-104');
+    assert.equal(await page.locator('#estudio').isVisible(),true);
+    await page.locator('#lienzo-eq').press('ArrowLeft');
+    assert.equal(await page.locator('#v-giro').getAttribute('aria-pressed'),'false');
+    for(const width of [390,768,1440]){
+      await page.setViewportSize({width,height:900});
+      await page.locator('#v-reset').click();
+      const rects=await page.evaluate(()=>({viewer:document.querySelector('#estudio').getBoundingClientRect().width,parent:document.querySelector('.visor').getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth}));
+      assert.equal(rects.overflow,false);
+      assert.ok(rects.viewer<=rects.parent+1,`Visor desborda a ${width}px`);
+      if(width===390)await page.locator('.visor').screenshot({path:path.join(out,'relato-movil.png')});
+    }
+    await page.setViewportSize({width:1440,height:1050});
+    await page.goto(base + "/gestion.html");
     await page.locator(".kpi").first().waitFor();
     assert.equal(await page.locator(".kpi").count(), 4);
     assert.match(await page.locator(".kpi.main").innerText(), /8.04 MM/);
@@ -205,7 +239,7 @@ const server = http.createServer((req, res) => {
     }
     // Fallo del recurso 3D: conservar datos y ofrecer reintento.
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(base + "/#equipos?equipo=FC-104&familia=all");
+    await page.goto(base + "/gestion.html#equipos?equipo=FC-104&familia=all");
     await page.route("**/assets/models/*.glb", (route) =>
       route.fulfill({ status: 503, body: "not available" }),
     );
@@ -215,12 +249,21 @@ const server = http.createServer((req, res) => {
     assert.match(await page.locator(".detail-metrics").innerText(), /400,935/);
     assert.deepEqual(errors, []);
     assert.deepEqual(failed, []);
+    await page.route('**/assets/vendor/three-r128.min.js',route=>route.fulfill({status:503,body:''}));
+    await page.goto(base);
+    await page.locator('#selector option').first().waitFor({state:'attached'});
+    assert.equal(await page.locator('#esquema').isVisible(),true);
+    assert.equal(await page.locator('#v-3d').isEnabled(),false);
+    assert.match(await page.locator('#q-costo').innerText(),/401/);
+    assert.deepEqual(errors,[]);
     fs.writeFileSync(
       path.join(out, "result.json"),
       JSON.stringify(
         {
           passed: true,
           checks: [
+            "relato continuo, materiales, tolva, selección de sistemas y fallback sin Three.js",
+            "encuadre del visor 390/768/1440",
             "totales",
             "cobertura vacía",
             "navegación",

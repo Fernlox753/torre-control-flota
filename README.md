@@ -1,5 +1,13 @@
 # Torre de Control de Flota
 
+## Propuesta visual · septiembre 2026
+
+La entrada vuelve al recorrido continuo de la referencia de Claude, con el tajo de fondo y el descenso hasta cada sistema del equipo. Incluye mejoras del camión procedural y controles de acabado, tolva e inspección. Las herramientas de gestión anteriores se conservan en `gestion.html`.
+
+Para reconstruir esta entrada: `pnpm build:relato`. Fuentes: `src/relato.*`. Para pruebas: `pnpm test` y `pnpm test:ui`. El build completo conserva también los bundles de gestión. Estado de entrega/publicación en [MEMORIA.md](docs/MEMORIA.md).
+
+Lo que sigue describe la plataforma v0.2 conservada como herramienta de gestión.
+
 **Una plataforma para pasar del indicador al equipo y del equipo a la acción.**
 
 [Abrir plataforma](https://fernlox753.github.io/torre-control-flota/) · [Presentación original](https://fernlox753.github.io/torre-control-flota/presentacion.html) · [Memoria para continuar el proyecto](docs/MEMORIA.md)

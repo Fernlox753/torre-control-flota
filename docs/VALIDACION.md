@@ -48,3 +48,14 @@ Las capturas de escritorio de los tests incluyen todos los contenidos de la pág
 ## No validado como operación productiva
 
 No se ha certificado compatibilidad con todos los navegadores, dispositivos de baja potencia, lectores de pantalla ni carga multiusuario. No se han validado datos contra SAP u otra fuente primaria. No hay pruebas de integración con ERP/CMMS porque no existe esa conexión. La ejecución automática de animaciones confirma funcionamiento de controles, no exactitud mecánica certificada de los equipos.
+# Revisión de la propuesta visual · 2026-09-15
+
+- Ocho pruebas de cálculos/importación aprobadas con `node --test --test-isolation=none tests/analytics.test.mjs`.
+- Suite `tests/ui.cjs` ampliada y aprobada: relato continuo, 48 equipos, alternancia de materiales con comparación de capturas del lienzo, tolva, selección de MOTOR1/OT, cambio esquema ↔ camión, teclado, contenedor del visor a 390/768/1440 px y alternativa sin Three.js.
+- La misma suite verifica gestión v0.2 en `gestion.html`: tres GLB, acciones, exportación/importación, navegación y fallback. Ejecutada con Edge y Playwright del runtime local mediante `NODE_PATH`.
+- Revisión visual en navegador: portada, camión abierto/cerrado y móvil. Se corrigió solapamiento de controles y ancho del lienzo móvil. Sin errores JavaScript observados.
+- Build del relato y comprobación de sintaxis aprobados. Instalación desde npm falló por conectividad; no se volvió a compilar la gestión. Se conservaron sus bundles publicados y se probaron.
+- Capturas y resultados en `test-results/relato-portada.png`, `relato-camion.png`, `relato-movil.png`, `result.json` (ignorados por Git).
+- Propuesta no desplegada en `main`. El historial siguiente corresponde a la entrega anterior.
+
+---

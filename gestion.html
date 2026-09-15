@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#102b49" />
+    <meta
+      name="description"
+      content="De los indicadores de gerencia a las decisiones de planificación. Torre de Control de Flota, San Martín."
+    />
+    <title>Torre de Control · San Martín</title>
+    <link rel="icon" href="assets/images/san-martin-white.png" />
+    <link rel="stylesheet" href="assets/platform.css" />
+    <script type="module" src="assets/build/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Saltar al contenido</a>
+    <aside class="sidebar">
+      <a class="brand" href="#gerencia" aria-label="Torre de Control, inicio"
+        ><img
+          src="assets/images/san-martin-white.png"
+          alt="San Martín Contratistas Generales"
+        /><span class="brand-rule"></span
+        ><span>TORRE DE CONTROL<small>Gestión de flota</small></span></a
+      >
+      <div class="workspace">
+        <span class="workspace-icon">SH</span>
+        <div>Sede SHGN<small>Operación minera</small></div>
+        <span class="online"></span>
+      </div>
+      <p class="nav-label">ESPACIO DE TRABAJO</p>
+      <nav class="main-nav" aria-label="Vistas de la plataforma">
+        <a href="#gerencia" data-view="gerencia"
+          ><svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" /></svg
+          >Resumen ejecutivo</a
+        >
+        <a href="#planificacion" data-view="planificacion"
+          ><svg viewBox="0 0 24 24">
+            <path
+              d="M9 5h12M9 12h12M9 19h12M3 5l1 1 2-3M3 12l1 1 2-3M3 19l1 1 2-3"
+            /></svg
+          >Planificación<span id="nav-actions" class="nav-count">0</span></a
+        >
+        <a href="#equipos" data-view="equipos"
+          ><svg viewBox="0 0 24 24">
+            <path d="m12 3 9 5v9l-9 5-9-5V8zm0 10v9M3 8l9 5 9-5" /></svg
+          >Equipos & 3D</a
+        >
+      </nav>
+      <div class="side-context">
+        <span class="eyebrow">UNA MISMA OPERACIÓN</span>
+        <p>
+          Del indicador<br />al equipo.<br /><strong
+            >Del equipo a la acción.</strong
+          >
+        </p>
+        <div class="context-line"><i></i><i></i><i></i></div>
+      </div>
+      <div class="side-bottom">
+        <a href="index.html">↗ Explorar recorrido visual</a
+        ><a href="#metodologia" data-view="metodologia">ⓘ Fuentes y alcance</a
+        ><span
+          >Creado por Joaquin Zavaleta<small>PLATAFORMA · V0.2</small></span
+        >
+      </div>
+    </aside>
+    <div class="shell">
+      <header class="topbar">
+        <div class="breadcrumb">
+          Operaciones <span>/</span> <strong>Torre de Control</strong>
+        </div>
+        <div class="top-right">
+          <span class="demo-pill"><i></i> Entorno de demostración</span
+          ><span class="avatar" aria-hidden="true">SM</span>
+        </div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow" id="page-eyebrow">GERENCIA / VISIÓN GENERAL</p>
+            <h1 id="page-title">Resumen ejecutivo</h1>
+            <p id="page-description">
+              Lo esencial para entender el costo y decidir dónde profundizar.
+            </p>
+          </div>
+          <button class="button secondary" id="export-summary">
+            ↓ Exportar resumen
+          </button>
+        </div>
+        <section class="context-bar" aria-label="Contexto compartido">
+          <div class="context-item">
+            <span class="tiny-label">PERÍODO DEL CIERRE</span
+            ><strong>Agosto 2026</strong>
+          </div>
+          <label class="context-item"
+            ><span class="tiny-label">FAMILIA DE EQUIPO</span
+            ><select id="family">
+              <option value="all">Todas las familias</option>
+            </select></label
+          >
+          <div class="context-source">
+            <span class="source-dot"></span
+            ><span
+              >Cierre cargado<small
+                >Sin conexión a sistemas en vivo</small
+              ></span
+            >
+          </div>
+        </section>
+        <div id="content">
+          <div class="empty">Preparando el cierre de flota…</div>
+        </div>
+        <noscript
+          >Activa JavaScript para usar la plataforma. La
+          <a href="presentacion.html">presentación original</a> sigue
+          disponible.</noscript
+        >
+        <footer class="page-footer">
+          <span>San Martín · Torre de Control de Flota</span
+          ><a href="#metodologia">Datos, fórmulas y alcance ↗</a>
+        </footer>
+      </main>
+    </div>
+    <dialog id="action-dialog" aria-labelledby="action-title">
+      <form id="action-form">
+        <div class="dialog-head">
+          <div>
+            <span class="eyebrow">PLAN DE TRABAJO LOCAL</span>
+            <h2 id="action-title">Preparar una acción</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            id="close-dialog"
+            aria-label="Cerrar"
+          >
+            ×
+          </button>
+        </div>
+        <p id="action-context" class="muted"></p>
+        <input name="equipment" type="hidden" /><label
+          >Responsable<input
+            name="owner"
+            required
+            maxlength="100"
+            placeholder="Nombre o equipo responsable"
+            autocomplete="off" /></label
+        ><label
+          >Fecha objetivo<input
+            name="due"
+            type="date"
+            required
+            min="2020-01-01"
+            max="2100-12-31" /></label
+        ><label
+          >Acción propuesta<textarea
+            name="note"
+            required
+            maxlength="1000"
+            rows="4"
+            placeholder="Qué revisar, evidencia necesaria y siguiente paso"
+          ></textarea>
+        </label>
+        <p class="small-note">
+          Se guarda en este navegador. Puedes exportarla para compartirla. No
+          crea una OT ni asigna trabajo en SAP.
+        </p>
+        <button class="button primary" type="submit">Guardar acción</button>
+      </form>
+    </dialog>
+    <input
+      id="import-file"
+      type="file"
+      accept="application/json,.json"
+      hidden
+    />
+    <div class="toast" role="status" aria-live="polite" id="toast" hidden></div>
+  </body>
+</html>

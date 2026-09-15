@@ -10,3 +10,4 @@ await build({
   legalComments: "eof",
 });
 console.log("Plataforma reconstruida en assets/build/");
+await import("./build-relato.mjs");
