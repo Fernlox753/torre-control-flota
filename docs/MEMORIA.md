@@ -14,7 +14,7 @@ El usuario rechazó el aspecto del panel v0.2 como entrada y pidió acercarse al
 
 **Alcance 3D:** camión genérico, no réplica de fabricante. La tolva abierta ilustra inspección; no es una simulación cinemática certificada. Equipos de otras familias siguen mostrando esquemas. Datos y limitaciones históricas permanecen vigentes. La siguiente mejora visual puede concentrarse en modelos por familia sin cambiar esta dirección de interfaz.
 
-**Estado:** propuesta local en la rama `codex/relato-3d`; no desplegada sobre `main`. La versión pública sigue siendo v0.2 hasta que se integre esta propuesta.
+**Estado:** propuesta subida a [la rama `codex/relato-3d`](https://github.com/Fernlox753/torre-control-flota/tree/codex/relato-3d), con implementación en el commit `436edb1`. No desplegada sobre `main`. La versión pública sigue siendo v0.2 hasta que se integre esta propuesta.
 
 ---
 ## Historial de la entrega anterior
